@@ -4,9 +4,9 @@ const Card = ({course}) => {
 
 
     return(
-        <div>
+        <div className="card">
             <div>
-                <img src={course.image.url} alt={course.image.alt}></img>
+                <img className="card-img" src={course.image.url} alt={course.image.alt}></img>
                 <div>
                     <button>
                         <FcLike fontSize="1.75rem"></FcLike>

@@ -2,8 +2,8 @@ const Navbar = () => {
     
     return (
         <div>
-            <nav>
-                <h2>Top Courses</h2>
+            <nav className="navbar">
+                <h2 className="navbar-para">Top Courses</h2>
             </nav>
         </div>
     );
