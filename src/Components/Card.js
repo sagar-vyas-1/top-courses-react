@@ -15,7 +15,11 @@ const Card = ({course}) => {
             </div>
             <div className="card-content">
                 <h3 className="card-content-header">{course.title}</h3>
-                <p className="card-content-para">{course.description}</p>
+                <p className="card-content-para">
+                    {
+                        course.description.length >= 150 ? (course.description.substr(0, 150)) + "..." : (course.description)
+                    }
+                </p>
             </div>
         </div>
     )
