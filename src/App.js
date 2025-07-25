@@ -1,25 +1,31 @@
 import { useEffect, useState } from "react";
-import { filterData, apiUrl } from "./data";
+import { toast } from "react-toastify";
 import axios from "axios";
 
+import { filterData, apiUrl } from "./data";
 import Cards from "./Components/Cards";
 import Filter from "./Components/Filters";
 import Navbar from "./Components/Navbar";
+import Spinner from "./Components/Spinner";
 
 const App = () => {
   
   const [courses, setCourses] = useState('');
+  const [loading, setLoading] = useState(true);
 
   // fetchData
   const fetchData = async () => {
+    setLoading(true);
     try {
       const fetchData = await axios.get(apiUrl);
       console.log(fetchData.data.data);
       setCourses(fetchData.data.data);
     } catch (error) {
+      toast.error("Network error");
       console.log(error);
       throw error;
     }
+    setLoading(false);
   }
 
   useEffect( () => {
@@ -28,11 +34,21 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navbar />
+      <div>
+        <Navbar />
+      </div>
+      
+      <div>
+        <Filter filterData={filterData} />
+      </div>
 
-      <Filter filterData={filterData}  />
+      <div>
+        {
+          loading ? (<Spinner />) : (<Cards courses={courses} />)
+        }
+      </div>
 
-      <Cards courses={courses} />
+
     </div>
   );
 };
