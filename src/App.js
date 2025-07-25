@@ -6,7 +6,7 @@ import { filterData, apiUrl } from "./data";
 import Cards from "./Components/Cards";
 import Filter from "./Components/Filters";
 import Navbar from "./Components/Navbar";
-import Spinner from "./Components/Spinner";
+import CourseSkeleton from "./Components/CourseSkeleton";
 
 const App = () => {
   
@@ -44,7 +44,7 @@ const App = () => {
 
       <div>
         {
-          loading ? (<Spinner />) : (<Cards courses={courses} />)
+          loading ? (<CourseSkeleton />) : (<Cards courses={courses} />)
         }
       </div>
 
